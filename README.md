@@ -1,13 +1,20 @@
-## galaxy-role-skeleton
+---
+name: 'ansible-galaxy-role-skeleton'
+about: 'Project template for Ansible Galaxy Roles.'
+comments: true
+feedback: true
+---
+
+# Ansible Galaxy Role Skeleton
 
 ## Description
 
-galaxy-role-skeleton is used to quickly create new ansible roles.
+Ansible Galaxy Role Skeleton is used to quickly create new Ansible Galaxy roles.
 
 ## Requirements
 
-- **ansible-galaxy** command
-- Python
+- Ansible 2.4+
+- Python 3.4+
 
 ## Usage
 
@@ -18,7 +25,7 @@ galaxy-role-skeleton is used to quickly create new ansible roles.
 Used as the roles repository name in cases where you have a single role per repository.
 
 ```shell
-ansible-role-myrole
+ansible-role-%{specific_role}
 ```
 
 ##### Roles short name
@@ -26,7 +33,7 @@ ansible-role-myrole
 Used when creating a new role using this project.:
 
 ```shell
-myrole
+%{specific_role}
 ```
 
 ### Setup
@@ -38,7 +45,8 @@ Clone your customised personal or business fork to your Ansible projects directo
 ```shell
 mkdir ~/projects
 cd ~/projects
-git clone git@github.com:cjsteel/galaxy-role-skeleton.git
+git clone git@gitlab.cherubits.hu:oss/ansible-galaxy-roles/ansible-galaxy-role-skeleton.git
+export ALTERNATIVE_ROLE_SKELETON_PATH=~/projects/ansible-galaxy-role-skeleton
 ```
 
 #### Create your role
@@ -46,7 +54,7 @@ git clone git@github.com:cjsteel/galaxy-role-skeleton.git
 ##### Syntax example
 
 ```shell
-ansible-galaxy init --role-skeleton=ALTERNATIVE_ROLE_SKELETON_PATH role-short-name
+ansible-galaxy init --role-skeleton=ALTERNATIVE_ROLE_SKELETON_PATH %{specific_role}
 ```
 
 #### Real world usage examples:
@@ -54,22 +62,22 @@ ansible-galaxy init --role-skeleton=ALTERNATIVE_ROLE_SKELETON_PATH role-short-na
 ##### To create a new role
 
 ```shell
-mkdir -p ~/projects/your-ansible-project/roles
-cd ~/projects/your-ansible-project/roles
-ansible-galaxy init --role-skeleton=~/projects/galaxy-role-skeleton/skeleton role-short-name -vvv
+mkdir -p ~/projects/ansible-%{specific_project}-playbook/roles
+cd ~/projects/ansible-%{specific_project}-playbook/roles
+ansible-galaxy init --role-skeleton=~/projects/ansible-galaxy-role-skeleton/skeleton %{specific_role} -vvv
 ```
 
 ##### To overwrite an existing role
 
 ```shell
-cd ~/projects/your-ansible-project/roles
-ansible-galaxy init --role-skeleton=~/projects/galaxy-role-skeleton/skeleton -f existing-role-short-name -vvv
+cd ~/projects/ansible-galaxy-role-skeleton/roles
+ansible-galaxy init --role-skeleton=~/projects/ansible-galaxy-role-skeleton/skeleton -f %{short-name-of-existing-role} -vvv
 ```
 
 ##### Set up your default Molecule scenario
 
 ```shell
-molecule init scenario -s default -d lxd -r role-short-name
+molecule init scenario -s default -d lxd -r %{short-name-of-role}
 ```
 
 ## Troubleshooting
