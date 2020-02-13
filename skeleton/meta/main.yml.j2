@@ -3,42 +3,33 @@
 
 dependencies:
 
-#  - role: cjsteel.resources
+#  - role: lordoftheflies.resources
 #    resources_on_local : '{{ '{{' }} {{ role_name }}_resources_on_local {{ '}}' }}'
 #    resources_on_remote: '{{ '{{' }} {{ role_name }}_resources_on_remote {{ '}}' }}'
 
-#  - role: acemenu
+#  - role: scaffold
 
 galaxy_info:
-  author: 'Christopher Steel'
-  description: '{{ role_name }} is used to...'
-  company: 'McGill Centre for Integrative Neuroscience'
+  role_name: 'ansible_role_{{role_name}}'
+  author: 'László Hegedűs'
+  description: 'Ansible Galaxy role for maintain {{ role_name }}.'
+  company: 'Cherubits'
   license: MIT
-  min_ansible_version: '1.7.1'
+  min_ansible_version: '2.9'
 
   platforms:
-    - name: EL
-      versions:
-        - 5
-        - 6
-        - 7
     - name: Ubuntu
       versions:
-        - bionic
-        - precise
-        - trusty
         - xenial
+        - disco
+        - eon
     - name: Debian
       versions:
-        - jessie
-        - squeeze
-        - stretch
         - wheezy
 
   galaxy_tags:
-    - mcin
+    - cherubits
     - {{ role_name }}
-    - centos
     - debian
     - ubuntu
 
