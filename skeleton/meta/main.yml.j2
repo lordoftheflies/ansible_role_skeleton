@@ -8,15 +8,14 @@ dependencies:
 #    resources_on_remote: '{{ '{{' }} {{ role_name }}_resources_on_remote {{ '}}' }}'
 
 #  - role: scaffold
-
 galaxy_info:
   role_name: 'ansible_role_{{role_name}}'
+  version: '1.0.0'
   author: 'László Hegedűs'
   description: 'Ansible Galaxy role for maintain {{ role_name }}.'
   company: 'Cherubits'
   license: MIT
   min_ansible_version: '2.9'
-
   platforms:
     - name: Ubuntu
       versions:
@@ -26,7 +25,6 @@ galaxy_info:
     - name: Debian
       versions:
         - wheezy
-
   galaxy_tags:
     - cherubits
     - {{ role_name }}
