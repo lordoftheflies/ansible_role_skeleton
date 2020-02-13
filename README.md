@@ -13,7 +13,7 @@ Ansible Galaxy Role Skeleton is used to quickly create new Ansible Galaxy roles.
 
 ## Requirements
 
-- Ansible 2.4+
+- Ansible 2.9+
 - Python 3.4+
 
 ## Usage
@@ -72,6 +72,14 @@ ansible-galaxy init --role-skeleton=~/projects/ansible-galaxy-role-skeleton/skel
 ```shell
 cd ~/projects/ansible-galaxy-role-skeleton/roles
 ansible-galaxy init --role-skeleton=~/projects/ansible-galaxy-role-skeleton/skeleton -f %{short-name-of-existing-role} -vvv
+```
+
+##### Set up Molecule environment
+
+```shell script
+virtualenv --python=/usr/bin/python3.7 env
+source ./env/bin/activate
+pip install molecule
 ```
 
 ##### Set up your default Molecule scenario
