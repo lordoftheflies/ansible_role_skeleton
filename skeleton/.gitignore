@@ -12,3 +12,6 @@ vagrant.retry
 .vagrant
 .vault
 generated_inventory
+
+.idea/
+env/
