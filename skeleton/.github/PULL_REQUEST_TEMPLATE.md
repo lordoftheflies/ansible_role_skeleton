@@ -1,5 +1,5 @@
 ---
-name: Pull-request
+name: 'Pull-request'
 about: Create a report to help us improve
 title: "[PULL-REQUEST] "
 labels: pull-request
@@ -17,4 +17,4 @@ assignees: ${assignee1}
 ### Description
 Please describe your pull request.
 
-❤️ Thank you!
+> Thank you!
