@@ -4,9 +4,11 @@ dependency:
 driver:
   name: vagrant
   provider:
-    name: virtualbox
+    name: libvirt
 lint:
   name: yamllint
+  options:
+    config-file: .ansible-lint
 platforms:
   - name: {{ role_name }}-xenial
     box: cjsteel/xenial
