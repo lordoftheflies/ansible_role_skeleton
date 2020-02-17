@@ -1,1 +1,16 @@
-ansible-test units --coverage apt
+*~
+.swp
+*.log
+.private
+.prv
+.retry
+*.retry
+.ansible
+.ansible-galaxy
+.vagrant
+.vault
+generated_inventory
+.env/
+.idea/
+.venv
+*.pyc

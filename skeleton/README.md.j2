@@ -70,13 +70,15 @@ pass, fail, untested, unsupported
 
 | OS | Version | Distribution | Supported [^1](#) | Results  |
 | :--- | :---: | :---: | :---: | :---: |
+{% for distribution in distributions %}
 {% for release in distribution.releases %}
 | {{ distribution.name }} | {{ release.name }} | [![Platform](http://img.shields.io/badge/{{ distribution.name }}-{{ release.name }}-purple.svg?style=flat)](#) | {% if release.supported %} supported {% else %} not supported {% endif %} | * |
+{% endfor %}
 {% endfor %}
 
 ## Authors
 
-- [{{ namespace }}](mailto:{{ lookup('pipe', 'git config user.email') }})
+- [{{ namespace }}](mailto:{{ namespace }})
 
 ## License: [MIT](https://tldrlegal.com/license/mit-license)
 

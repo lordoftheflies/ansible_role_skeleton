@@ -77,9 +77,9 @@ ansible-galaxy init --role-skeleton=~/projects/ansible-galaxy-role-skeleton/skel
 ##### Set up Molecule environment
 
 ```shell script
-virtualenv --python=/usr/bin/python3.7 env
-source ./env/bin/activate
-pip install molecule
+virtualenv --python=/usr/bin/python3.7 .env
+source .env/bin/activate
+pip install molecule docker molecule[lint] molecule[docker]
 ```
 
 ##### Set up your default Molecule scenario

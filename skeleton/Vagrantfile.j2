@@ -7,7 +7,7 @@
   ENV['VAGRANT_DEFAULT_PROVIDER'] = '{{ virtualization_provider }}'
 
   boxes = [
-  {% for machine in machines %}
+  {% for machine in platforms %}
 
     {
       :name => "{{ machine.name }}",
