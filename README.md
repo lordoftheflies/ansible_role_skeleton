@@ -105,12 +105,13 @@ touch molecule/default/pytest.ini" like this one.
 addopts = -p no:cacheprovider -p no:stepwise
 ```
 
-## Author(s)
+## Authors
 
 - [László Hegedűs](mailto:laszlo.hegedus@cherubits.hu)
 - [Christopher Steel](mailto:christopher.steel@mcgill.ca)
+- [Jeff Geerling](https://github.com/geerlingguy)
 
 ## License 
 
-[MIT](https://tldrlegal.com/license/mit-license)
+[Apache-2.0](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
 

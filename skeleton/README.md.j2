@@ -7,11 +7,11 @@ description: 'Quickstart and examples for demonstrating the role capabilities.'
 
 ## Status
 
-[![Build Status](https://travis-ci.org/{{ namespace }}/{{ role_name }}.svg?branch=master)](https://travis-ci.org/{{ namespace }}/{{ role_name }})
+[![Build Status](https://travis-ci.org/lordoftheflies/{{ role_name }}.svg?branch=master)](https://travis-ci.org/lordoftheflies/ansible-role-{{ role_name }})
 
 ## Description
 
-{{ role_name | capitalize }} is an Ansible role used to setup and maintain production grade services.
+{{ role_name | capitalize }} is an Ansible Role used to setup and maintain production grade services.
 
 ## Roadmap
 
@@ -20,7 +20,7 @@ description: 'Quickstart and examples for demonstrating the role capabilities.'
 ## References
 
 * [docs.ansible.com](https://docs.ansible.com/)
-* [On Ansible Galaxy](https://galaxy.ansible.com/{{ namespace }}/{{ role_name }})
+* [On Ansible Galaxy](https://galaxy.ansible.com/lordoftheflies/ansible_role_{{ role_name }})
 
 ## Requirements
 
@@ -50,6 +50,14 @@ description: 'Quickstart and examples for demonstrating the role capabilities.'
 * [example_{{ role_name }}.yml](files/example_site.yml) may contain an example entry.
 
 ## Testing
+
+### Testing with Molecule
+
+```shell
+molecule test
+```
+
+### Testing with Vagrant
 
 To test with all VM's defined in Vagrantfile run the following:
 
