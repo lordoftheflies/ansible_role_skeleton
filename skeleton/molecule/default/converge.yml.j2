@@ -1,0 +1,20 @@
+---
+- name: "Converge"
+  hosts: all
+  become: true
+  vars:
+    - {{ role_name }}_deployment_users_home: /root
+    - {{ role_name }}_testing_provider: lxd
+
+  roles:
+    - lordoftheflies.ansible_role_{{ role_name }}
+
+
+  vars:
+    gitlab_restart_handler_failed_when: false
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=true cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+      changed_when: false

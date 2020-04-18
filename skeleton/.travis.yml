@@ -1,29 +1,54 @@
 ---
 language: python
-python: "3.4"
+services: docker
 
-# Use the new container infrastructure
-sudo: false
+env:
+  global:
+    - ROLE_NAME: ansible-role-{{ role_name }}
+  matrix:
+#    - MOLECULE_DISTRO: centos6
+#      MOLECULE_PLAYBOOK: converge-integration.yml
+    - MOLECULE_DISTRO: centos7
+      MOLECULE_PLAYBOOK: converge-integration.yml
+#    - MOLECULE_DISTRO: centos8
+#      MOLECULE_PLAYBOOK: converge-integration.yml
+    - MOLECULE_DISTRO: debian8
+      MOLECULE_PLAYBOOK: converge-integration.yml
+    - MOLECULE_DISTRO: debian9
+      MOLECULE_PLAYBOOK: converge-integration.yml
+#    - MOLECULE_DISTRO: debian10
+#      MOLECULE_PLAYBOOK: converge-integration.yml
+#    - MOLECULE_DISTRO: fedora27
+#      MOLECULE_PLAYBOOK: converge-integration.yml
+#    - MOLECULE_DISTRO: fedora29
+#      MOLECULE_PLAYBOOK: converge-integration.yml
+#    - MOLECULE_DISTRO: fedora30
+#      MOLECULE_PLAYBOOK: converge-integration.yml
+#    - MOLECULE_DISTRO: fedora31
+#      MOLECULE_PLAYBOOK: converge-integration.yml
+#    - MOLECULE_DISTRO: ubuntu1204
+#      MOLECULE_PLAYBOOK: converge-integration.yml
+#    - MOLECULE_DISTRO: ubuntu1404
+#      MOLECULE_PLAYBOOK: converge-integration.yml
+    - MOLECULE_DISTRO: ubuntu1604
+      MOLECULE_PLAYBOOK: converge-integration.yml
+    - MOLECULE_DISTRO: ubuntu1804
+      MOLECULE_PLAYBOOK: converge-integration.yml
 
-# Install ansible
-addons:
-  apt:
-    packages:
-      - python-pip
+install:
+  # Install test dependencies.
+  - pip install molecule yamllint ansible-lint docker
+
+before_script:
+  - export GALACTICAL_ROLE_NAME=$(echo "$ROLE_NAME" | sed -r 's/-/_/g')
+  # Use actual Ansible Galaxy role name for the project directory.
+  - cd ../
+  - mv $ROLE_NAME lordoftheflies.$GALACTICAL_ROLE_NAME
+  - cd lordoftheflies.$GALACTICAL_ROLE_NAME
+
+script:
+  # Run tests.
+  - molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
-
-install:
-  # Install Ansible.
-  - pip install ansible
-
-  # Check ansible version
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
-
-script:
-  # Check the role/playbook's syntax.
-  - ansible-playbook tests/travis/travis_tests.yml -i tests/travis/travis_inventory --syntax-check

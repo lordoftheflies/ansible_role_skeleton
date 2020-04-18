@@ -7,11 +7,11 @@ description: 'Quickstart and examples for demonstrating the role capabilities.'
 
 ## Status
 
-[![Build Status](https://travis-ci.org/{{ lookup('pipe', 'git config user.name') }}/{{ role_name }}.svg?branch=master)](https://travis-ci.org/{{ lookup('pipe', 'git config user.name') }}/{{ role_name }})
+[![Build Status](https://travis-ci.org/lordoftheflies/{{ role_name }}.svg?branch=master)](https://travis-ci.org/lordoftheflies/ansible-role-{{ role_name }})
 
 ## Description
 
-{{ role_name | capitalize }} is an Ansible role used to setup and maintain production grade services.
+{{ role_name | capitalize }} is an Ansible Role used to setup and maintain production grade services.
 
 ## Roadmap
 
@@ -20,7 +20,7 @@ description: 'Quickstart and examples for demonstrating the role capabilities.'
 ## References
 
 * [docs.ansible.com](https://docs.ansible.com/)
-* [On Ansible Galaxy](https://galaxy.ansible.com/{{ lookup('pipe', 'git config user.name') }}/{{ collection_name }})
+* [On Ansible Galaxy](https://galaxy.ansible.com/lordoftheflies/ansible_role_{{ role_name }})
 
 ## Requirements
 
@@ -32,10 +32,10 @@ description: 'Quickstart and examples for demonstrating the role capabilities.'
 
 * [Vagrant](https://www.vagrantup.com/) - (Tested using version 2.1.1)
 * Vagrant plugins:
-  * [vagrant-disksize (0.1.2)](https://github.com/{{ lookup('pipe', 'git config user.name') }}/vagrant-disksize)
-  * [vagrant-libvirt](https://github.com/{{ lookup('pipe', 'git config user.name') }}/vagrant-libvirt)
-  * vai (0.9.3) - For testing with multiple vms [vagrant-plugin-vai](https://github.com/{{ lookup('pipe', 'git config user.name') }}/vagrant-plugin-vai)
-  * [vagrant-vbguest (0.15.2) - Recommended vagrant-vbguest](https://github.com/{{ lookup('pipe', 'git config user.name') }}/vagrant-vbguest)
+  * [vagrant-disksize (0.1.2)](https://github.com/{{ namespace }}/vagrant-disksize)
+  * [vagrant-libvirt](https://github.com/{{ namespace }}/vagrant-libvirt)
+  * vai (0.9.3) - For testing with multiple vms [vagrant-plugin-vai](https://github.com/{{ namespace }}/vagrant-plugin-vai)
+  * [vagrant-vbguest (0.15.2) - Recommended vagrant-vbguest](https://github.com/{{ namespace }}/vagrant-vbguest)
 * [Virtual Box](https://www.virtualbox.org/)
   * Tested using Version 5.2.14 r123301 (Qt5.6.1)
 
@@ -50,6 +50,14 @@ description: 'Quickstart and examples for demonstrating the role capabilities.'
 * [example_{{ role_name }}.yml](files/example_site.yml) may contain an example entry.
 
 ## Testing
+
+### Testing with Molecule
+
+```shell
+molecule test
+```
+
+### Testing with Vagrant
 
 To test with all VM's defined in Vagrantfile run the following:
 
@@ -70,14 +78,16 @@ pass, fail, untested, unsupported
 
 | OS | Version | Distribution | Supported [^1](#) | Results  |
 | :--- | :---: | :---: | :---: | :---: |
+{% for distribution in distributions %}
 {% for release in distribution.releases %}
 | {{ distribution.name }} | {{ release.name }} | [![Platform](http://img.shields.io/badge/{{ distribution.name }}-{{ release.name }}-purple.svg?style=flat)](#) | {% if release.supported %} supported {% else %} not supported {% endif %} | * |
+{% endfor %}
 {% endfor %}
 
 ## Authors
 
-- [{{ lookup('pipe', 'git config user.name') }}](mailto:{{ lookup('pipe', 'git config user.email') }})
+- [{{ namespace }}](mailto:{{ namespace }})
 
 ## License: [MIT](https://tldrlegal.com/license/mit-license)
 
-* {{ role_name }} generated using [ansible_collection_skeleton](https://github.com/{{ lookup('pipe', 'git config user.name') }}/ansible_collection_skeleton)
+* {{ role_name }} generated using [ansible_collection_skeleton](https://github.com/{{ namespace }}/ansible_collection_skeleton)

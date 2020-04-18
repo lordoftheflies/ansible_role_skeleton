@@ -77,9 +77,9 @@ ansible-galaxy init --role-skeleton=~/projects/ansible-galaxy-role-skeleton/skel
 ##### Set up Molecule environment
 
 ```shell script
-virtualenv --python=/usr/bin/python3.7 env
-source ./env/bin/activate
-pip install molecule
+virtualenv --python=/usr/bin/python3.7 .env
+source .env/bin/activate
+pip install molecule docker molecule[lint] molecule[docker]
 ```
 
 ##### Set up your default Molecule scenario
@@ -105,12 +105,13 @@ touch molecule/default/pytest.ini" like this one.
 addopts = -p no:cacheprovider -p no:stepwise
 ```
 
-## Author(s)
+## Authors
 
 - [László Hegedűs](mailto:laszlo.hegedus@cherubits.hu)
 - [Christopher Steel](mailto:christopher.steel@mcgill.ca)
+- [Jeff Geerling](https://github.com/geerlingguy)
 
 ## License 
 
-[MIT](https://tldrlegal.com/license/mit-license)
+[Apache-2.0](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
 
