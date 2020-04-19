@@ -3,15 +3,20 @@
   hosts: all
   become: true
   vars:
-    - {{ role_name }}_deployment_users_home: /root
-    - {{ role_name }}_testing_provider: lxd
+    - ansible_role_{{ role_name }}_system_user: root
+    - ansible_role_{{ role_name }}_system_group: adm
+    - ansible_role_{{ role_name }}_public: true
+    - ansible_role_{{ role_name }}_secure: true
+    - ansible_role_{{ role_name }}_endpoint_protocol: https
+    - ansible_role_{{ role_name }}_endpoint_host: localhost
+    - ansible_role_{{ role_name }}_endpoint_port: 443
+    - ansible_role_{{ role_name }}_certificate_public_path: /etc/ssl/cert
+    - ansible_role_{{ role_name }}_certificate_private_path: /etc/ssl/private
+    - ansible_role_{{ role_name }}_endpoint_location: /var/www/html
+    - ansible_role_{{ role_name }}_service: apache2
 
   roles:
-    - lordoftheflies.ansible_role_{{ role_name }}
-
-
-  vars:
-    gitlab_restart_handler_failed_when: false
+    - ansible-role-{{ role_name }}
 
   pre_tasks:
     - name: Update apt cache.

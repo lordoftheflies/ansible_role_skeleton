@@ -4,15 +4,25 @@
   become: true
 
   vars:
-    ansible_role_{{ role_name }}_restart_handler_failed_when: false
+    - ansible_role_{{ role_name }}_system_user: root
+    - ansible_role_{{ role_name }}_system_group: adm
+    - ansible_role_{{ role_name }}_public: true
+    - ansible_role_{{ role_name }}_secure: true
+    - ansible_role_{{ role_name }}_endpoint_protocol: https
+    - ansible_role_{{ role_name }}_endpoint_host: localhost
+    - ansible_role_{{ role_name }}_endpoint_port: 443
+    - ansible_role_{{ role_name }}_certificate_public_path: /etc/ssl/cert
+    - ansible_role_{{ role_name }}_certificate_private_path: /etc/ssl/private
+    - ansible_role_{{ role_name }}_endpoint_location: /var/www/html
+    - ansible_role_{{ role_name }}_service: apache2
 
   pre_tasks:
-    - name: Update apt cache.
+    - name: "Update apt cache."
       apt: update_cache=true cache_valid_time=600
       when: ansible_os_family == 'Debian'
       changed_when: false
 
-    - name: Remove the .dockerenv file so GitLab Omnibus doesn't get confused.
+    - name: "Remove the .dockerenv file so GitLab Omnibus doesn't get confused."
       file:
         path: /.dockerenv
         state: absent

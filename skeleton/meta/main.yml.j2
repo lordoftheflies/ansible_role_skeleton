@@ -3,10 +3,10 @@
 
 dependencies: []
 galaxy_info:
-  role_name: '{{role_name}}'
+  role_name: 'ansible_role_{{ role_name }}'
   version: '1.1.0'
   author: 'lordoftheflies'
-  description: 'Ansible Galaxy role for maintain {{ role_name }}.'
+  description: 'Ansible Galaxy role for maintain {{ role_name | capitalize }}.'
   company: 'Cherubits'
   license: Apache-2.0
   min_ansible_version: '2.9'
@@ -27,4 +27,5 @@ galaxy_info:
     - {{ role_name }}
     - debian
     - ubuntu
+    - centos
 
